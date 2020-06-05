@@ -5,25 +5,9 @@
         <div class="centrer">
             <input dir="rtl" type="text" name="query" placeholder="بحث...">
             <select type="text" name="type">
-                <option>الكل</option>
-                <option>تقديم الجامعات</option>
-                <option>الإعداد الجامعي</option>
-                <option>خدمة المجتمع</option>
-                <option>مسابقة</option>
-                <option>دورة</option>
-                <option>مهرجان تعليمي</option>
-                <option>تجهيز للإمتحانات</option>
-                <option>رحلة</option>
-                <option>زمالة</option>
-                <option>تدريب</option>
-                <option>محاكاة الأمم المتحدة</option>
-                <option>منحة دراسية</option>
-                <option>رياضة</option>
-                <option>مخيم صيفي</option>
-                <option>فصل افتراضي</option>
-                <option>تطوع</option>
-                <option>ورشة عمل</option>
-                <option>أخرى</option>
+                <% types.forEach(function(type) { %>
+                    <option><%= type.ar %></option>
+                <% }) %>
             </select>
             <select name="location">
                 <option>الكل</option>

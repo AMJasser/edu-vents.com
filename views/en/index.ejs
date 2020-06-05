@@ -5,25 +5,9 @@
         <div class="centrer">
             <input type="text" name="query" placeholder="Search...">
             <select type="text" name="type">
-                <option>Any</option>
-                <option>College Admissions</option>
-                <option>College Prep</option>
-                <option>Community Service</option>
-                <option>Contest</option>
-                <option>Course</option>
-                <option>Educational Festival</option>
-                <option>Exam Prep</option>
-                <option>Expedition</option>
-                <option>Fellowship</option>
-                <option>Internship</option>
-                <option>MUN</option>
-                <option>Scholarship</option>
-                <option>Sports</option>
-                <option>Summer Camp</option>
-                <option>Virtual Class</option>
-                <option>Volunteering</option>
-                <option>Workshop</option>
-                <option>Other</option>
+                <% types.forEach(function(type) { %>
+                    <option><%= type.en %></option>
+                <% }) %>
             </select>
             <select name="location">
                 <option>Any</option>
