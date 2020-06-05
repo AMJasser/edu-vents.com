@@ -3,7 +3,7 @@
 <main>
     <form id="search" action="/ar/edu-vents" method="GET">
         <div class="centrer">
-            <input type="text" name="query" placeholder="Search...">
+            <input dir="rtl" type="text" name="query" placeholder="بحث...">
             <select type="text" name="type">
                 <option>الكل</option>
                 <option>تقديم الجامعات</option>
@@ -43,12 +43,12 @@
         <div class="row" style="display: flex;">
     <% } %>
             <div class="edu-vent">
-                <div class="featured">مميز</div>
+                <div dir="rtl" class="featured">مميز</div>
                 <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                 <div class="inner">
-                    <% if (typeof eduvent.name !== "undefined") { %> <h2><%= eduvent.name %></h2> <% } %> 
-                    <% if (typeof eduvent.description !== "undefined") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
-                    <a href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
+                    <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
+                    <% if (typeof eduvent.description !== "undefined") { %> <p dir="rtl"><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                    <a dir="rtl" href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
                 </div>
             </div>
     <% if (counter %3 == 0) { %>
@@ -65,9 +65,9 @@
                 <div class="edu-vent">
                     <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                     <div class="inner">
-                        <% if (typeof eduvent.name !== "undefined") { %> <h2><%= eduvent.name %></h2> <% } %> 
-                        <% if (typeof eduvent.description !== "undefined") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
-                        <a href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
+                        <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
+                        <% if (typeof eduvent.description !== "undefined") { %> <p dir="rtl"><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                        <a dir="rtl" href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
                     </div>
                 </div>
         <% if (counter %3 == 0) { %>
