@@ -1,0 +1,86 @@
+<%- include ("partials/header") %>
+
+<main>
+    <form id="search" action="/edu-vents" method="GET">
+        <div class="centrer">
+            <input type="text" name="query" placeholder="Search...">
+            <select type="text" name="type">
+                <option>Any</option>
+                <option>College Admissions</option>
+                <option>College Prep</option>
+                <option>Community Service</option>
+                <option>Contest</option>
+                <option>Course</option>
+                <option>Educational Festival</option>
+                <option>Exam Prep</option>
+                <option>Expedition</option>
+                <option>Fellowship</option>
+                <option>Internship</option>
+                <option>MUN</option>
+                <option>Scholarship</option>
+                <option>Sports</option>
+                <option>Summer Camp</option>
+                <option>Virtual Class</option>
+                <option>Volunteering</option>
+                <option>Workshop</option>
+                <option>Other</option>
+            </select>
+            <select name="location">
+                <option>Any</option>
+                <option>Jeddah</option>
+                <option>Riyadh</option>
+                <option>Sharqiah</option>
+                <option>Other</option>
+            </select>
+            <button>Search</button>
+        </div>
+    </form>
+
+    <% var counter = 1; %>
+
+    <% featured.forEach(function(eduvent) { %>
+    <% if (counter % 3 == 1) { %>
+    <div class="row" style="display: flex;">
+        <% } %>
+        <div class="edu-vent">
+            <div class="featured">featured</div>
+            <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
+            <div class="inner">
+                <% if (typeof eduvent.name !== "undefined") { %> <h2><%= eduvent.name %></h2> <% } %> 
+                <% if (typeof eduvent.description !== "undefined") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                <a href="/edu-vents/en/<%= eduvent._id %>" target="_blank">Learn more</a>
+            </div>
+        </div>
+        <% if (counter %3 == 0) { %>
+    </div>
+    <% } %>
+    <% counter++ %>
+    <% }) %>
+
+
+    <% notFeatured.forEach(function(eduvent) { %>
+    <% if (counter % 3 == 1) { %>
+    <div class="row" style="display: flex;">
+        <% } %>
+        <div class="edu-vent">
+            <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
+            <div class="inner">
+                <% if (typeof eduvent.name !== "undefined") { %> <h2><%= eduvent.name %></h2> <% } %> 
+                <% if (typeof eduvent.description !== "undefined") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                <a href="/edu-vents/en/<%= eduvent._id %>" target="_blank">Learn more</a>
+            </div>
+        </div>
+        <% if (counter %3 == 0) { %>
+    </div>
+    <% } %>
+    <% counter++ %>
+    <% }) %>
+</main>
+
+<style>
+    #edu-vents {
+        font-weight: bold;
+    }
+</style>
+
+<%- include ("partials/footer") %>

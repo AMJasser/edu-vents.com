@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <% if (typeof eduvent.name !== "undefined") { %> 
+        <title>إديوفينتس | <%= eduvent.name %></title>
+    <% } else { %> 
+        <title>إديوفينتس</title>
+    <% } %>
+
+    <% if (typeof eduvent.name !== "undefined") { %>
+        <meta name="description" content="<%= eduvent.description %>">
+    <% } else if (typeof eduvent.name !== "undefined" && typeof eduvent.name !== "undefined") { %>
+        <meta name="description" content=".إديو- فينتس - تمت صناعة الموقع خصيصا لمساعدة الفطاحلة. سوف يتم عرض اهم الاحداث التعليمية التي تحدث حول العالم وسوف يتم توفير واجهة موقع سهلة الاستخدام">
+    <% } else { %> 
+        <meta name="description" content="<%= eduvent.name %> - <%= eduvent.description %>">
+    <% } %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <% if (typeof eduvent.imgPath !== "undefined") { %>
+        <link rel="icon" href="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
+    <% } %> 
+
+    <link rel="stylesheet" href="/stylesheets/ar/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="/scripts/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <header class="wrapped">
+        <button><img alt="burger" src="/images/burger.png"></button>
+
+        <nav>
+            <a href="/ar" id="home">الرئيسية</a>
+            <a href="/ar/edu-vents" id="edu-vents">إديوفينتس</a>
+        </nav>
+
+        <h1 onclick="location.href='/'">
+            <span>إديوفينتس</span>
+            <img alt="logo" src="/images/logo.png">
+        </h1>
+
+        <script>
+            $("header button").on("click", function () {
+                if ($("#collapse-div").is(':visible')) {
+                    $("#collapse-div").slideUp(500);
+                } else {
+                    $("#collapse-div").slideDown(500);
+                }
+            });
+        </script>
+    </header>
+    <div id="collapse-div" class="wrapped">
+        <a href="/" id="home">الرئيسية</a>
+        <a href="/edu-vents" id="edu-vents" style="margin: 2.5px auto;">إديوفينتس</a>
+    </div>
+
+    <div class="view">
+
+        <% if (new Date < eduvent.featuredUntil) { %> 
+            <div class="featured">مميز</div>
+        <% } %> 
+
+        <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
+        <div class="inner">
+
+            <% if (typeof eduvent.name !== "undefined") { %> 
+                <h3><%= eduvent.name %></h3>
+                <br>
+                <br>
+            <% } %>
+
+            <% if (typeof eduvent.description !== "undefined") { %>
+                <h4>الوصف</h4>
+                <p><%- eduvent.description %></p>
+                <br>
+                <br>
+            <% } %> 
+
+            <% if (typeof eduvent.type !== "undefined") { %>
+                <h4>النوع</h4>
+                <h5><%= eduvent.type %></h5>
+                <br>
+                <br>
+            <% } %> 
+
+
+            <% if (typeof eduvent.location !== "undefined" || (typeof eduvent.googleMaps !== "undefined" && typeof eduvent.locationInfo !== "undefined")) { %> 
+                <h4>Location</h4>
+                <% if (!(eduvent.location === "أخرى" || typeof eduvent.location === "undefined") && (typeof eduvent.googleMaps !== "undefined" && typeof eduvent.locationInfo !== "undefined")) { %> 
+                    <h5><%= eduvent.location %> &nbsp;&nbsp; - &nbsp;&nbsp; <a href="<%= eduvent.googleMaps %>"><%= eduvent.locationInfo %></a></h5>
+                <% } else if (eduvent.location === "other" || typeof eduvent.location === "undefined") { %>
+                    <h5><a href="<%= eduvent.googleMaps %>"><%= eduvent.locationInfo %></a></h5>
+                <% } else { %> 
+                    <h5><%= eduvent.location %></h5>
+                <% } %>
+                <br>
+                <br>
+            <% } %>
+
+            
+            <h4>التاريخ</h4>
+            <% if (typeof eduvent.startDate !== "undefined") { var dd = eduvent.startDate.getDate(); var mm = eduvent.startDate.getMonth() + 1; var yyyy = eduvent.startDate.getFullYear(); if (dd < 10) {dd = "0" + dd;}; if (mm < 10) {mm = "0" + mm;} } %>
+            <% if (typeof eduvent.endDate !== "undefined") {var ddEnd = eduvent.endDate.getDate(); var mmEnd = eduvent.endDate.getMonth() + 1; var yyyyEnd = eduvent.endDate.getFullYear(); if (ddEnd < 10) {ddEnd = "0" + ddEnd;}; if (mmEnd < 10) {mmEnd = "0" + mmEnd;}} %>
+            
+            <% if (typeof eduvent.startDate !== "undefined" && typeof eduvent.endDate !== "undefined") { %>
+                <h5><%= dd + "/" + mm + "/" + yyyy %><%= " " + "-" + " " + ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+            <% } else if (typeof eduvent.startDate !== "undefined") { %>
+                <h5><%= dd + "/" + mm + "/" + yyyy %></h5>
+            <% } else { %>
+                <h5>ends on: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+            <% } %>
+
+            <% if (typeof eduvent.urltoapp !== "undefined") { %> 
+                <a class="attend" href="/edu-vents/ar/<%= eduvent._id %>/attend" target="_blank">احضر</a>
+            <% } %> 
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <a id="envelope" href="mailto:educational.vents@gmail.com" traget="_blank"><img alt="contact-us"
+                    src="/images/envelope.png"></a>
+            <a href="https://www.instagram.com/edu_vents/" traget="_blank"><img alt="instagram"
+                    src="/images/instagram-logo.png"></a>
+            <a href="https://twitter.com/edu_vents" traget="_blank"><img alt="twitter"
+                    src="/images/twitter-logo.png"></a>
+        </div>
+        <h6 onclick="location.href = '/'">
+            <span>العربية</span>
+            <img alt="lang" src="/images/worlwide.png">
+        </h6>
+    </footer>
+</body>
+
+</html>

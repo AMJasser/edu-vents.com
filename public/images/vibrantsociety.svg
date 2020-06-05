@@ -1,0 +1,80 @@
+<svg id="Group_2" data-name="Group 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 111.995 104.921">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #cad434;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-4 {
+        fill: #1f396c;
+      }
+
+      .cls-5 {
+        fill: #2982c3;
+      }
+
+      .cls-6 {
+        clip-path: url(#clip-path-5);
+      }
+
+      .cls-7 {
+        fill: #70b446;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Clip_3" data-name="Clip 3" class="cls-1" d="M6.9,12.109,0,52.225,54.921,104.54l55.235-52.615-1.89-44.4L54.825,0Z" transform="translate(0.742 0.38)"/>
+    </clipPath>
+    <clipPath id="clip-path-5">
+      <path id="Clip_16" data-name="Clip 16" class="cls-1" d="M6.95,12.109,0,52.225,55.306,104.54l55.622-52.615-1.9-44.4L55.209,0" transform="translate(0.068 0.38)"/>
+    </clipPath>
+  </defs>
+  <path id="Fill_1" data-name="Fill 1" class="cls-2" d="M54.748,0,0,52.057,54.844,104.2,110,51.759Z"/>
+  <g id="Group_14" data-name="Group 14">
+    <g id="Group_4" data-name="Group 4">
+      <path id="Clip_3-2" data-name="Clip 3" class="cls-1" d="M6.9,12.109,0,52.225,54.921,104.54l55.235-52.615-1.89-44.4L54.825,0Z" transform="translate(0.742 0.38)"/>
+      <g id="Group_4-2" data-name="Group 4" class="cls-3">
+        <path id="Fill_2" data-name="Fill 2" class="cls-4" d="M0,8.077A19.639,19.639,0,0,1,12.59,0H39.569s8.479,1.224,9.25,9.3V25.7L29.548,49.44,0,13.461Z" transform="translate(3.661 47.312)"/>
+      </g>
+    </g>
+    <g id="Group_7" data-name="Group 7">
+      <path id="Clip_6-2" data-name="Clip 6" class="cls-1" d="M6.9,12.109,0,52.225,54.921,104.54l55.235-52.615-1.89-44.4L54.825,0Z" transform="translate(0.742 0.38)"/>
+      <g id="Group_7-2" data-name="Group 7" class="cls-3">
+        <path id="Fill_5" data-name="Fill 5" class="cls-4" d="M2.783,31.763H31.5V13.773h1.734a4.02,4.02,0,0,0,0-4.406h-2.7S28.992.8,17.858.006c0,0-10.835-.551-14.882,9.178H.664a3.2,3.2,0,0,0,0,3.855H2.4Z" transform="translate(13.082 12.49)"/>
+      </g>
+    </g>
+    <g id="Group_10" data-name="Group 10">
+      <path id="Clip_9-2" data-name="Clip 9" class="cls-1" d="M6.9,12.109,0,52.225,54.921,104.54l55.235-52.615-1.89-44.4L54.825,0Z" transform="translate(0.742 0.38)"/>
+      <g id="Group_10-2" data-name="Group 10" class="cls-3">
+        <path id="Fill_8" data-name="Fill 8" class="cls-5" d="M0,31.763H30.063V11.693S28.2,0,15.931,0C.449,0,0,11.571,0,11.571Z" transform="translate(67.255 12.489)"/>
+      </g>
+    </g>
+    <g id="Group_13" data-name="Group 13">
+      <path id="Clip_12-2" data-name="Clip 12" class="cls-1" d="M6.9,12.109,0,52.225,54.921,104.54l55.235-52.615-1.89-44.4L54.825,0Z" transform="translate(0.742 0.38)"/>
+      <g id="Group_13-2" data-name="Group 13" class="cls-3">
+        <path id="Fill_11" data-name="Fill 11" class="cls-5" d="M0,19.11V.019H44.066s6.552-.734,11.048,6.976S60,33.061,60,33.061L37.385,45.176,20.556,44.2Z" transform="translate(53.251 48.15)"/>
+      </g>
+    </g>
+  </g>
+  <g id="Group_21" data-name="Group 21" transform="translate(1)">
+    <g id="Group_17" data-name="Group 17">
+      <path id="Clip_16-2" data-name="Clip 16" class="cls-1" d="M6.95,12.109,0,52.225,55.306,104.54l55.622-52.615-1.9-44.4L55.209,0" transform="translate(0.068 0.38)"/>
+      <g id="Group_17-2" data-name="Group 17" class="cls-6">
+        <path id="Fill_15" data-name="Fill 15" class="cls-7" d="M24.387,11.534c0,6.37-5.459,11.534-12.193,11.534S0,17.9,0,11.534,5.459,0,12.194,0,24.387,5.164,24.387,11.534" transform="translate(43.338 42.386)"/>
+      </g>
+    </g>
+    <g id="Group_20" data-name="Group 20">
+      <path id="Clip_19-2" data-name="Clip 19" class="cls-1" d="M6.95,12.109,0,52.225,55.306,104.54l55.622-52.615-1.9-44.4L55.209,0" transform="translate(0.068 0.38)"/>
+      <g id="Group_20-2" data-name="Group 20" class="cls-6">
+        <path id="Fill_18" data-name="Fill 18" class="cls-7" d="M29.191,60.332H13.113C5.9,60.332,0,54.751,0,47.928V12.4C0,5.583,5.9,0,13.113,0H29.191C36.4,0,42.3,5.583,42.3,12.4V47.928c0,6.822-5.9,12.4-13.113,12.4" transform="translate(34.282 67.779)"/>
+      </g>
+    </g>
+  </g>
+</svg>

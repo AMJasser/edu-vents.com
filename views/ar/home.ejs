@@ -1,0 +1,88 @@
+<%- include ("partials/header") %>
+
+<div id="img-bg" class="wrapped">
+    <div>
+        <h2>.اعثر على حدثك</h2>
+        <p>إديوفينتس هو موقع إلكتروني يعرض الأحداث والفعاليات التعليمية الموجهه لفئة الشباب الطموحين. هدف إديوفنتس الرئيسي هو تسهيل عناء استعداد البعثة للشباب الذين يرغبون بالدراسة في الخارج بتزويدهم بالأنشطة اللاصفية المقامة حولهم</p>
+        <a href="/ar/edu-vents">ابدأ</a>
+    </div>
+</div>
+
+<% if (featured.length > 0) { %>
+    <div id="container">
+    <% featured.forEach(function(eduvent) { %>
+        <div class="edu-vent">
+            <div class="featured">مميز</div>
+            <img src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
+            <div class="inner">
+                <% if (typeof eduvent.name !== "undefined") { %> <h2><%= eduvent.name %></h2> <% } %> 
+                <% if (typeof eduvent.description !== "undefined") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                <a href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
+            </div>
+        </div>
+    <% }) %>
+    </div>
+<% } %>
+
+<main>
+    <div id="vision">
+        <img src="/images/vision2030.png">
+        <div>
+            <img src="/images/vibrantsociety.svg">
+            <h3>مجتمع حيوي</h3>
+            <p>إن أحد سمات رؤية 2030 للمملكة العربية السعودية هو وجود مجتمع حيوي بيئته عامرة. نظراً لأن إديوفينتس يساعد في مشاركة الأحداث التعليمية, فسيساهم (بإذن الله) في تحقيق هذا الهدف</p>
+        </div>
+    </div>
+
+    <div id="shapes">
+        <span id="circle-top"></span>
+        <span id="line"></span>
+        <span id="circle-bottom"></span>
+    </div>
+
+    <div id="what">
+        <div>
+            <h3>إديوفينتس</h3>
+            <p>لهذا السبب, أنشأنا إديوفينتس. نود أن نملأ حياة الشاب السعودي لفتح فرص عالمية لصالحهم</p>
+        </div>
+        <img src="/images/logo_blue.jpg">
+    </div>
+
+    <div id="benefit">
+        <div>
+            <span class="dotted"></span>
+            <div class="section">
+                <img src="/images/resume.png">
+                <p>ابحث بين مئات الإديوفينتات في مختلف أنحاء المملكة العربية السعودية</p>
+            </div>
+        </div>
+
+        <div>
+            <span class="dotted"></span>
+            <div class="section">
+                <img src="/images/tap.png">
+                <p>اوصل الى جميع أجزاء الموقع بسهولة بدون تسجيل أو رسوم</p>
+            </div>
+        </div>
+
+        <div>
+            <span class="dotted"></span>
+            <div>
+                <img src="/images/friendship.png">
+                <p>الموقع محافظ عليه من قبل شباب سعودي طموح مستعد لاخذ الخطوة التالية</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    #home {
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    $(".wrapped").wrapAll('<div id="wrapper"></div>');
+</script>
+
+<%- include ("partials/footer") %>
