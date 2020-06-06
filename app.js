@@ -5,6 +5,7 @@ const mongoose       = require("mongoose"); //dependency that I did not develop
 const Eduvent        = require("./models/eduvent");
 const EduventAr      = require("./models/eduventAr");
 const Type           = require("./models/type");
+const Location       = require("./models/location");
 const methodOverride = require("method-override"); //dependency that I did not develop
 const ua             = require('universal-analytics'); //dependency that I did not develop
 const helmet         = require("helmet");
@@ -105,8 +106,9 @@ app.get("/edu-vents", async function (req, res, next) { //english
 
             var allEduvents = await Eduvent.find(search); //getting data from DB
             var types = await Type.find();
+            var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types }, function(err, html) {
+            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -122,8 +124,9 @@ app.get("/edu-vents", async function (req, res, next) { //english
         try {
             var allEduvents = await Eduvent.find(); //getting data from DB
             var types = await Type.find();
+            var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types }, function(err, html) {
+            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -167,8 +170,9 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
 
             var allEduvents = await EduventAr.find(search); //getting data from DB
             var types = await Type.find();
+            var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types }, function(err, html) {
+            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -184,8 +188,9 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
         try {
             var allEduvents = await EduventAr.find(); //getting data from DB
             var types = await Type.find();
+            var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types }, function(err, html) {
+            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});

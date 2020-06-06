@@ -10,11 +10,9 @@
                 <% }) %>
             </select>
             <select name="location">
-                <option>Any</option>
-                <option>Jeddah</option>
-                <option>Riyadh</option>
-                <option>Sharqiah</option>
-                <option>Other</option>
+                <% locations.forEach(function(location) { %>
+                    <option><%= location.en %> </option>
+                <% }) %>
             </select>
             <button>Search</button>
         </div>

@@ -10,11 +10,9 @@
                 <% }) %>
             </select>
             <select name="location">
-                <option>الكل</option>
-                <option>جدة</option>
-                <option>الرياض</option>
-                <option>الشرقية</option>
-                <option>أخرى</option>
+                <% locations.forEach(function(location) { %>
+                    <option><%= location.ar %> </option>
+                <% }) %>
             </select>
             <button>بحث</button>
         </div>
