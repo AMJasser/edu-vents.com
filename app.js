@@ -2,6 +2,8 @@ const express        = require("express"); //dependency that I did not develop
 const app            = express();
 const bodyParser     = require("body-parser"); //dependency that I did not develop
 const mongoose       = require("mongoose"); //dependency that I did not develop
+const fs             = require("fs");
+const path           = require("path")
 const Eduvent        = require("./models/eduvent");
 const EduventAr      = require("./models/eduventAr");
 const Type           = require("./models/type");
@@ -310,7 +312,7 @@ app.get("/forms/:url", async function(req, res) {
         }
 
         if (result === true) {
-            res.send("you've already submitted the form");
+            res.send("<h1>you've already submitted the form</h1><a href='/'>Click Here To Go Back</a>");
         } else {
             if (form.isOpen === true && new Date() < form.endDate) {
                 res.render("form", {form: form}, function(err, html) {
