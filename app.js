@@ -6,9 +6,12 @@ const Eduvent        = require("./models/eduvent");
 const EduventAr      = require("./models/eduventAr");
 const Type           = require("./models/type");
 const Location       = require("./models/location");
+const Form           = require("./models/form");
 const methodOverride = require("method-override"); //dependency that I did not develop
 const ua             = require('universal-analytics'); //dependency that I did not develop
 const helmet         = require("helmet");
+const multer         = require("multer");
+const cookieParser   = require("cookie-parser");
 
 
 mongoose.connect("mongodb://localhost:27017/EDU-vents", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }); //DB connection
@@ -17,7 +20,21 @@ app.set("view engine", "ejs"); //setting a view engine
 app.use(express.static(__dirname + "/public")); //setting directory
 app.use(methodOverride("_method")); //setting up HTTP Method Override
 app.use(helmet());
+app.use(cookieParser());
 var visitor = ua("UA-151935099-1"); //Google Analytics
+
+const anyStorage = multer.diskStorage({
+    destination: "./public/form uploads/",
+    filename: function (req, file, cb) {
+        var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var id = "";
+        for (var i = 0; i < 10; i++) {
+            id += char_list.charAt(Math.floor(Math.random() * 62));
+        }
+        cb(null, Date.now() + "-" + id + path.extname(file.originalname));
+    }
+});
+const anyUpload = multer({ storage: anyStorage }).any();
 
 function escapeRegex(text) { //function to escape Regex (Regex injection attack)
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
@@ -45,14 +62,25 @@ app.get("/", async function (req, res) { //english
     try {
         var allEduvents = await Eduvent.find(); //getting data from DB
         const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-        res.render("en/home", { featured: Eduvents.featured }, function(err, html) {
-            if (err) {
-                console.log(err);
-                res.render("error", {error: err});
-            } else {
-                res.send(html);
-            }
-        }); //render page
+        if (typeof req.query.msg !== "undefined") {
+            res.render("en/home", { featured: Eduvents.featured, msg: req.query.msg }, function(err, html) {
+                if (err) {
+                    console.log(err);
+                    res.render("error", {error: err});
+                } else {
+                    res.send(html);
+                }
+            }); //render page
+        } else {
+            res.render("en/home", { featured: Eduvents.featured }, function(err, html) {
+                if (err) {
+                    console.log(err);
+                    res.render("error", {error: err});
+                } else {
+                    res.send(html);
+                }
+            }); //render page
+        }
     } catch (err) { //error handling
         console.log(err);
         res.render("error");
@@ -271,11 +299,67 @@ app.get("/edu-vents/ar/:id/attend", async function(req, res) {
     }
 });
 
-app.get("/apply", function(req, res) {
-    res.writeHead(200, {"Content-Type": "text/html"});
-    res.write('<head><title>EDU-vents Volunteer Application</title><link rel="icon" href="/images/seco.ico"><meta http-equiv="refresh" content="5; URL=https://docs.google.com/forms/d/e/1FAIpQLSfmrsYymzoh_19vFBsK1aTUqcD4JFdfFYrqKalm8GuTbHJYqg/viewform?usp=sf_link/" /></head><body><h1>Redirecting...</h1><a href="https://docs.google.com/forms/d/e/1FAIpQLSfmrsYymzoh_19vFBsK1aTUqcD4JFdfFYrqKalm8GuTbHJYqg/viewform?usp=sf_link/">if you are not redirected please click here</a></body>');
-    res.end();
-    visitor.pageview("/apply").send();
+app.get("/forms/:url", async function(req, res) {
+    try {
+        var form = await Form.findOne({ url: req.params.url });
+        for (var i=0; i < form.responses.length; i++) {
+            if (req.cookies["fid"] === form.responses[i].fid) {
+                var result = true;
+                var response = form.responses[i];
+            }
+        }
+
+        if (result === true) {
+            res.send("you've already submitted the form");
+        } else {
+            if (form.isOpen === true && new Date() < form.endDate) {
+                res.render("form", {form: form}, function(err, html) {
+                    if (err) {
+                        console.log(err);
+                        res.render("error", {error: err});
+                    } else {
+                        res.send(html);
+                    }
+                });
+            } else {
+                res.send("<h1>The form is not open</h1>");
+            }
+        }
+    } catch(err) {
+        console.log(err);
+        res.render("error");
+    }
+});
+
+app.post("/forms/:url", anyUpload, async function(req, res) {
+    try {
+        var form = await Form.findOne({url: req.params.url});
+        var fid = req.body.fid;
+        delete req.body.fid;
+        var entries = Object.entries(req.body);
+        var files = [];
+        for (var i = 0; i < entries.length; i++) {
+            for (var e = 0; e < entries[i].length; e++) {
+                if (typeof entries[i][e] === "object") {
+                    entries[i][e] = entries[i][e].join(", ");
+                }
+            }
+        }
+        req.files.forEach(function (file) {
+            files.push([file.fieldname, file.filename]);
+        });
+        var response = {
+            QandA: entries,
+            files: files,
+            fid: fid,
+        }
+        form.responses.push(response);
+        form.save();
+        res.redirect("/?msg=Submitted Successfully");
+    } catch(err) {
+        console.log(err);
+        res.render("error");
+    }
 });
 
 app.get("*", function (req, res) { //english 404

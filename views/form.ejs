@@ -1,0 +1,82 @@
+<%- include ("en/partials/header") %>
+
+<style>
+
+    #formDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #formDiv form {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        width: 80%;
+        height: 100%;
+        padding: 2.5%;
+        margin: 2.5%;
+        text-align: left;
+    }
+
+    #formDiv form label {
+        font-size: 17.5px;
+        font-weight: bold;
+        display: block;
+    }
+
+    #formDiv form input {
+        display: block;
+        width: 75%;
+        padding: 7.5px 12.5px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        border: 2px solid rgb(28, 68, 178);
+        background: white;
+        border-radius: 10px;
+    }
+
+    #formDiv form input[type=submit] {
+        width: fit-content;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        background-color: rgb(28, 68, 178);
+        border-radius: 5px;
+        margin: 0 auto;
+        transition: transform .2s;
+    }
+
+    #formDiv form input[type=submit]:hover {
+        cursor: pointer;
+        transform: scale(1.5);
+    }
+</style>
+
+<div id="formDiv">
+    <form action="/forms/<%= form.url %>" method="POST" enctype="multipart/form-data" id="mainForm" data-expires="<%= form.endDate %>" onsubmit="return submitForm()">
+        <%- form.html %>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var mainForm = document.getElementById("mainForm");
+
+    function submitForm() {
+        var dt = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (dt + Math.random() * 16) % 16 | 0;
+            dt = Math.floor(dt / 16);
+            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+        document.cookie = "fid=" + uuid + "; expires=" + new Date(mainForm.dataset.expires) + "; path=/forms/<%= form.url %>";
+        var fidInput = document.createElement("input");
+        fidInput.type = "hidden";
+        fidInput.name = "fid";
+        fidInput.value = uuid;
+        mainForm.append(fidInput);
+        return true;
+    }
+</script>
+
+<%- include ("en/partials/footer") %>
