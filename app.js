@@ -16,7 +16,7 @@ const multer         = require("multer");
 const cookieParser   = require("cookie-parser");
 
 
-mongoose.connect("mongodb://localhost:27017/EDU-vents", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }); //DB connection
+mongoose.connect("mongodb://localhost:27017/EDU-vents", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).catch(error => { console.log(error) }); //DB connection
 app.use(bodyParser.urlencoded({ extended: true })); //parsing setup
 app.set("view engine", "ejs"); //setting a view engine
 app.use(express.static(__dirname + "/public")); //setting directory
@@ -84,8 +84,8 @@ app.get("/", async function (req, res) { //english
             }); //render page
         }
     } catch (err) { //error handling
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -102,8 +102,8 @@ app.get("/ar", async function (req, res, next) { //arabic
             }
         }); //render page
     } catch (err) { //error handling
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -147,8 +147,8 @@ app.get("/edu-vents", async function (req, res, next) { //english
                 }
             }); //render page
         } catch (err) { //error handling
-            console.log(err);
-            res.render("error");
+            console.error(err);
+        res.status(500).render("error");
         }
     } else {
         try {
@@ -165,8 +165,8 @@ app.get("/edu-vents", async function (req, res, next) { //english
                 }
             }); //render page
         } catch (err) { //error handling
-            console.log(err);
-            res.render("error");
+            console.error(err);
+            res.status(500).render("error");
         }
     };
 });
@@ -211,8 +211,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
                 }
             }); //render page
         } catch (err) { //error handling
-            console.log(err);
-            res.render("error");
+            console.error(err);
+            res.status(500).render("error");
         }
     } else {
         try {
@@ -229,8 +229,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
                 }
             }); //render page
         } catch (err) { //error handling
-            console.log(err);
-            res.render("error");
+            console.error(err);
+            res.status(500).render("error");
         }
     };
 });
@@ -247,8 +247,8 @@ app.get("/edu-vents/en/:id", async function(req, res) {
             }
         });
     } catch(err) {
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -264,8 +264,8 @@ app.get("/edu-vents/ar/:id", async function(req, res) {
             }
         });
     } catch(err) {
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -280,8 +280,8 @@ app.get("/edu-vents/en/:id/attend", async function(req, res) {
         }
         eduvent.save();
     } catch(err) {
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -296,8 +296,8 @@ app.get("/edu-vents/ar/:id/attend", async function(req, res) {
         }
         eduvent.save();
     } catch(err) {
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -328,8 +328,8 @@ app.get("/forms/:url", async function(req, res) {
             }
         }
     } catch(err) {
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
@@ -359,8 +359,8 @@ app.post("/forms/:url", anyUpload, async function(req, res) {
         form.save();
         res.redirect("/?msg=Submitted Successfully");
     } catch(err) {
-        console.log(err);
-        res.render("error");
+        console.error(err);
+        res.status(500).render("error");
     }
 });
 
