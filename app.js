@@ -310,6 +310,42 @@ app.get("/edu-vents/ar/:id/attend", async function(req, res) {
     }
 });
 
+app.get("/initiatives/en/:id", async function(req, res) {
+    try {
+        var initiative = await Initiative.findById(req.params.id);
+        var eduvents = await Eduvent.find({initiative: initiative._id.toString()});
+        res.render("en/initiative", {initiative, eduvents}, function(err, html) {
+            if (err) {
+                console.log(err);
+                res.render("error", {error: err});
+            } else {
+                res.send(html);
+            }
+        });
+    } catch(err) {
+        console.log(err);
+        res.status(500).render("error");
+    }
+});
+
+app.get("/initiatives/ar/:id", async function(req, res) {
+    try {
+        var initiative = await Initiative.findById(req.params.id);
+        var eduvents = await EduventAr.find({initiative: initiative._id.toString()});
+        res.render("ar/initiative", {initiative, eduvents}, function(err, html) {
+            if (err) {
+                console.log(err);
+                res.render("error", {error: err});
+            } else {
+                res.send(html);
+            }
+        });
+    } catch(err) {
+        console.log(err);
+        res.status(500).render("error");
+    }
+});
+
 app.get("/forms/:url", async function(req, res) {
     try {
         var form = await Form.findOne({ url: req.params.url });
