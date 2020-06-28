@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var eduventSchema = new mongoose.Schema({ //eduvents schema
+var eduventSchema = new mongoose.Schema({
     name: String,
     type: String,
     imgPath: String,
@@ -13,7 +13,8 @@ var eduventSchema = new mongoose.Schema({ //eduvents schema
     urltoapp: String,
     featuredUntil: Date,
     userId: String,
-    clickCount: Number
+    clickCount: Number,
+    initiative: String
 });
 
-module.exports = mongoose.model("Eduvent", eduventSchema); //exports
+module.exports = mongoose.model("Eduvent", eduventSchema);

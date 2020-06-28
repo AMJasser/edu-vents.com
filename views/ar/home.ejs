@@ -8,11 +8,35 @@
     </div>
 </div>
 
+<% if (initiatives.length > 0) { %>
+    <div class="container">
+        <% initiatives.forEach(function(initiative) { %>
+            <div class="edu-vent">
+                <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                <div class="inner">
+                    <% if (typeof initiative.name !== "undefined") { %><h2><%= initiative.nameAr %></h2><% } %>
+                    <a href="<%= initiative._id %>" target="_blank">Learn more</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+    <% } %>
+
 <% if (featured.length > 0) { %>
-    <div id="container">
+    <div class="container">
     <% featured.forEach(function(eduvent) { %>
         <div class="edu-vent">
-            <div dir="rtl" class="featured">مميز</div>
+            <div class="featinit">
+                <div dir="rtl" class="featured">مميز</div>
+                <% initiatives.forEach(function(initiative) { %>
+                    <% if (eduvent.initiative === initiative._id.toString()) { %>
+                        <div class="initiative">
+                            <%= initiative.nameAr %>
+                            <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                        </div>
+                    <% } %>
+                <% }) %>
+            </div>
             <img src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
             <div class="inner">
                 <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 

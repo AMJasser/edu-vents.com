@@ -9,6 +9,7 @@ const EduventAr      = require("./models/eduventAr");
 const Type           = require("./models/type");
 const Location       = require("./models/location");
 const Form           = require("./models/form");
+const Initiative     = require("./models/initiative");
 const methodOverride = require("method-override"); //dependency that I did not develop
 const ua             = require('universal-analytics'); //dependency that I did not develop
 const helmet         = require("helmet");
@@ -64,8 +65,9 @@ app.get("/", async function (req, res) { //english
     try {
         var allEduvents = await Eduvent.find(); //getting data from DB
         const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
+        var initiatives = await Initiative.find();
         if (typeof req.query.msg !== "undefined") {
-            res.render("en/home", { featured: Eduvents.featured, msg: req.query.msg }, function(err, html) {
+            res.render("en/home", { featured: Eduvents.featured, msg: req.query.msg, initiatives: initiatives }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -74,7 +76,7 @@ app.get("/", async function (req, res) { //english
                 }
             }); //render page
         } else {
-            res.render("en/home", { featured: Eduvents.featured }, function(err, html) {
+            res.render("en/home", { featured: Eduvents.featured, initiatives: initiatives }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -93,7 +95,8 @@ app.get("/ar", async function (req, res, next) { //arabic
     try {
         var allEduvents = await EduventAr.find(); //getting data from DB
         const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-        res.render("ar/home", { featured: Eduvents.featured }, function(err, html) {
+        var initiatives = await Initiative.find();
+        res.render("ar/home", { featured: Eduvents.featured, initiatives: initiatives }, function(err, html) {
             if (err) {
                 console.log(err);
                 res.render("error", {error: err});
@@ -138,7 +141,8 @@ app.get("/edu-vents", async function (req, res, next) { //english
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
+            var initiatives = await Initiative.find();
+            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -156,7 +160,8 @@ app.get("/edu-vents", async function (req, res, next) { //english
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
+            var initiatives = await Initiative.find();
+            res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -202,7 +207,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
+            var initiatives = await Initiative.find();
+            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -220,7 +226,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
-            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations }, function(err, html) {
+            var initiatives = await Initiative.find();
+            res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
                 if (err) {
                     console.log(err);
                     res.render("error", {error: err});
@@ -238,7 +245,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
 app.get("/edu-vents/en/:id", async function(req, res) {
     try {
         var eduvent = await Eduvent.findById(req.params.id);
-        res.render("en/view", {eduvent}, function(err, html) {
+        var initiative = await Initiative.findById(eduvent.initiative);
+        res.render("en/view", {eduvent, initiative}, function(err, html) {
             if (err) {
                 console.log(err);
                 res.render("error", {error: err});
@@ -255,7 +263,8 @@ app.get("/edu-vents/en/:id", async function(req, res) {
 app.get("/edu-vents/ar/:id", async function(req, res) {
     try {
         var eduvent = await EduventAr.findById(req.params.id);
-        res.render("ar/view", {eduvent}, function(err, html) {
+        var initiative = await Initiative.findById(eduvent.initiative);
+        res.render("ar/view", {eduvent, initiative}, function(err, html) {
             if (err) {
                 console.log(err);
                 res.render("error", {error: err});

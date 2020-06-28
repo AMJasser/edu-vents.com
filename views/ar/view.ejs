@@ -62,9 +62,20 @@
 
     <div class="view">
 
-        <% if (new Date < eduvent.featuredUntil) { %> 
-            <div dir="rtl" class="featured">مميز</div>
-        <% } %> 
+        <div class="featinit">
+            <% if (new Date < eduvent.featuredUntil) { %> 
+                <div dir="rtl" class="featured">مميز</div>
+            <% } %>
+
+            <% if (typeof initiative === "object" && initiative !== null) { %>
+                <div class="initiative">
+                    <%= initiative.nameAr %>
+                    <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                </div>
+            <% } else { %>
+                <div></div>
+            <% } %>
+        </div>
 
         <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
         <div class="inner">

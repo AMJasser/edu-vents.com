@@ -25,7 +25,17 @@
         <div class="row" style="display: flex;">
     <% } %>
             <div class="edu-vent">
-                <div dir="rtl" class="featured">مميز</div>
+                <div class="featinit">
+                    <div dir="rtl" class="featured">مميز</div>
+                    <% initiatives.forEach(function(initiative) { %>
+                        <% if (eduvent.initiative === initiative._id.toString()) { %>
+                            <div class="initiative">
+                                <%= initiative.nameAr %>
+                                <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </div>
                 <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                 <div class="inner">
                     <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
@@ -45,6 +55,16 @@
             <div class="row" style="display: flex;">
         <% } %>
                 <div class="edu-vent">
+                    <div class="featinit">
+                        <% initiatives.forEach(function(initiative) { %>
+                            <% if (eduvent.initiative === initiative._id.toString()) { %>
+                                <div class="initiative">
+                                    <%= initiative.nameAr %>
+                                    <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                                </div>
+                            <% } %>
+                        <% }) %>
+                    </div>
                     <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                     <div class="inner">
                         <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
