@@ -15,7 +15,7 @@
                 <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
                 <div class="inner">
                     <% if (typeof initiative.name !== "undefined") { %><h2><%= initiative.nameAr %></h2><% } %>
-                    <a href="<%= initiative._id %>" target="_blank">Learn more</a>
+                    <a href="initiatives/ar/<%= initiative._id %>" target="_blank">Learn more</a>
                 </div>
             </div>
         <% }) %>
@@ -30,7 +30,7 @@
                 <div dir="rtl" class="featured">مميز</div>
                 <% initiatives.forEach(function(initiative) { %>
                     <% if (eduvent.initiative === initiative._id.toString()) { %>
-                        <div class="initiative">
+                        <div class="initiative" onclick="location.href='/initiatives/ar/<%= initiative._id %>'" style="cursor: pointer;">
                             <%= initiative.nameAr %>
                             <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
                         </div>

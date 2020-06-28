@@ -68,7 +68,7 @@
             <% } %>
 
             <% if (typeof initiative === "object" && initiative !== null) { %>
-                <div class="initiative">
+                <div class="initiative" onclick="location.href='/initiatives/ar/<%= initiative._id %>'" style="cursor: pointer;">
                     <%= initiative.nameAr %>
                     <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
                 </div>

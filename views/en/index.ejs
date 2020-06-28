@@ -28,7 +28,7 @@
             <div class="featinit">
                 <% initiatives.forEach(function(initiative) { %>
                     <% if (initiative._id.toString() === eduvent.initiative) { %>
-                        <div class="initiative">
+                        <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
                             <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
                             <%= initiative.name %>
                         </div>
@@ -60,7 +60,7 @@
             <div class="featinit">
                 <% initiatives.forEach(function(initiative) { %>
                     <% if (initiative._id.toString() === eduvent.initiative) { %>
-                        <div class="initiative">
+                        <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
                             <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
                             <%= initiative.name %>
                         </div>

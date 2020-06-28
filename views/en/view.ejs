@@ -70,7 +70,7 @@
         <div class="featinit">
 
             <% if (typeof initiative === "object" && initiative !== null) { %>
-                <div class="initiative">
+                <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
                     <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
                     <%= initiative.name %>
                 </div>
