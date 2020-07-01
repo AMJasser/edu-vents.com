@@ -121,13 +121,17 @@
             
             <% if (typeof eduvent.startDate !== "undefined" && typeof eduvent.endDate !== "undefined") { %>
                 <h5 dir="rtl"><%= dd + "/" + mm + "/" + yyyy %><%= " " + "-" + " " + ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+                <br>
             <% } else if (typeof eduvent.startDate !== "undefined") { %>
                 <h5 dir="rtl"><%= dd + "/" + mm + "/" + yyyy %></h5>
+                <br>
             <% } else if (typeof eduvent.endDate !== "undefined") { %>
                 <h5 dir="rtl">ينتهي في: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+                <br>
             <% } %>
 
             <% if (typeof eduvent.urltoapp !== "undefined") { %> 
+                <br>
                 <a dir="rtl" class="attend" href="/edu-vents/ar/<%= eduvent._id %>/attend" target="_blank">احضر</a>
             <% } %> 
         </div>

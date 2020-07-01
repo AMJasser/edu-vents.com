@@ -122,13 +122,17 @@
 
             <% if (typeof eduvent.startDate !== "undefined" && typeof eduvent.endDate !== "undefined") { %>
                 <h5><%= dd + "/" + mm + "/" + yyyy %><%= " " + "-" + " " + ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+                <br>
             <% } else if (typeof eduvent.startDate !== "undefined") { %>
                 <h5><%= dd + "/" + mm + "/" + yyyy %></h5>
+                <br>
             <% } else if (typeof eduvent.endDate !== "undefined") { %>
                 <h5>ends on: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+                <br>
             <% } %>
 
             <% if (typeof eduvent.urltoapp !== "undefined") { %> 
+                <br>
                 <a class="attend" href="/edu-vents/en/<%= eduvent._id %>/attend" target="_blank">Attend</a>
             <% } %> 
         </div>
