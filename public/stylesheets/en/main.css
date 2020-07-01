@@ -29,15 +29,17 @@ html, body {
 }
 
 #featured .edu-vent img {
-    max-width: 600px;
+    max-width: 500px;
 }
 
-@media only screen and (max-width: 1075px) {
+@media only screen and (max-width: 1650px) {
     #featured > div {
         flex-flow: column;
         text-align: center;
     }
 }
+
+
 
 
 
