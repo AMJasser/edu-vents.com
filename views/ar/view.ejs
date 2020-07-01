@@ -123,8 +123,8 @@
                 <h5 dir="rtl"><%= dd + "/" + mm + "/" + yyyy %><%= " " + "-" + " " + ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
             <% } else if (typeof eduvent.startDate !== "undefined") { %>
                 <h5 dir="rtl"><%= dd + "/" + mm + "/" + yyyy %></h5>
-            <% } else { %>
-                <h5 dir="rtl">ends on: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
+            <% } else if (typeof eduvent.endDate !== "undefined") { %>
+                <h5 dir="rtl">ينتهي في: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
             <% } %>
 
             <% if (typeof eduvent.urltoapp !== "undefined") { %> 

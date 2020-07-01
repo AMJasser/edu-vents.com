@@ -124,7 +124,7 @@
                 <h5><%= dd + "/" + mm + "/" + yyyy %><%= " " + "-" + " " + ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
             <% } else if (typeof eduvent.startDate !== "undefined") { %>
                 <h5><%= dd + "/" + mm + "/" + yyyy %></h5>
-            <% } else { %>
+            <% } else if (typeof eduvent.endDate !== "undefined") { %>
                 <h5>ends on: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
             <% } %>
 
