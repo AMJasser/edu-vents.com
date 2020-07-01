@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/images/seco.ico">
 
     <% if (typeof eduvent.name !== "undefined") { %> 
         <title dir="rtl">إديوفينتس | <%= eduvent.name %></title>
@@ -23,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <% if (typeof eduvent.imgPath !== "undefined") { %>
-        <link rel="icon" href="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
+        <meta property="og:image" itemprop="image" content="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
     <% } %> 
 
     <link rel="stylesheet" href="/stylesheets/ar/main.css">
