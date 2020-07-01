@@ -3,6 +3,50 @@ html, body {
     margin: 0;
 }
 
+#featured {
+    height: auto;
+    width: auto;
+    margin: 2.5% 15%;
+    padding: 20px;
+    text-align: center;
+}
+
+#featured > div {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+#featured > div > div {
+    display: flex;
+    flex-flow: column;
+}
+
+#featured .edu-vent {
+    width: max-content; 
+    min-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#featured .edu-vent img {
+    max-width: 600px;
+}
+
+@media only screen and (max-width: 1075px) {
+    #featured > div {
+        flex-flow: column;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #featured .edu-vent {
+        width: max-content; 
+        min-width: 0;
+    }
+}
+
 
 
 
@@ -593,6 +637,7 @@ main {
 
 .edu-vent img {
     width: 90%;
+    max-width: 600px;
 }
 
 .edu-vent .inner {

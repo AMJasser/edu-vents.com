@@ -59,7 +59,7 @@ function feat(Eduvents) {
     });
 
     return { featured: featured, notFeatured: notFeatured };
-}
+};
 
 app.get("/", async function (req, res) { //english
     try {
@@ -105,6 +105,27 @@ app.get("/ar", async function (req, res, next) { //arabic
             }
         }); //render page
     } catch (err) { //error handling
+        console.error(err);
+        res.status(500).render("error");
+    }
+});
+
+app.get("/featured", async function(req, res) {
+    try {
+        var allEduventsEn = await Eduvent.find();
+        var allEduventsAr = await EduventAr.find();
+        var eduvents = feat(allEduventsEn);
+        var eduventsar = feat(allEduventsAr);
+        var initiatives = await Initiative.find();
+        res.render("featured", { eduvents: eduvents.featured, eduventsar: eduventsar.featured, initiatives }, function(err, html) {
+            if (err) {
+                console.log(err);
+                res.render("error", {error: err});
+            } else {
+                res.send(html);
+            }
+        });
+    } catch(err) {
         console.error(err);
         res.status(500).render("error");
     }
