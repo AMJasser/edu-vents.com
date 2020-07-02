@@ -87,6 +87,7 @@
         </div>
     </div>
 
+    <% if (eduvents.length > 0) { %>
     <div class="edu-vents">
         <% eduvents.forEach(function(eduvent) { %>
             <div>
@@ -96,6 +97,7 @@
             </div>
         <% }) %>
     </div>
+    <% } %>
 
     <footer>
         <h6 onclick="location.href = '/ar'">
