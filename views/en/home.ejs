@@ -10,20 +10,6 @@
     </div>
 </div>
 
-<% if (initiatives.length > 0) { %>
-    <div class="container">
-        <% initiatives.forEach(function(initiative) { %>
-            <div class="edu-vent">
-                <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
-                <div class="inner">
-                    <% if (typeof initiative.name !== "undefined") { %><h2><%= initiative.name %></h2><% } %>
-                    <a href="initiatives/en/<%= initiative._id %>" target="_blank">Learn more</a>
-                </div>
-            </div>
-        <% }) %>
-    </div>
-<% } %>
-
 <% if (featured.length > 0) { %>
     <div class="container">
         <% featured.forEach(function(eduvent) { %>
