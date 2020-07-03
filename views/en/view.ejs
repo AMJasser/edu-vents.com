@@ -7,18 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="/images/seco.ico">
 
-    <% if (typeof eduvent.name !== "undefined") { %> 
+    <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> 
         <title>EDU-vents | <%= eduvent.name %></title>
-    <% } else { %> 
+    <% } else { %>
         <title>EDU-vents</title>
     <% } %> 
 
-    <% if (typeof eduvent.name !== "undefined") { %>
+    <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %>
         <meta name="description" content="<%= eduvent.description %>">
-    <% } else if (typeof eduvent.name !== "undefined" && typeof eduvent.name !== "undefined") { %>
-        <meta name="description" content="EDU-vents - This website was created solely for the help of Philomaths. It would show the most important educational events happening around the world, providing an easy-to-use portal for them.">
-    <% } else { %> 
+    <% } else if (typeof eduvent.name !== "undefined" && typeof eduvent.description !== "undefined") { %>
         <meta name="description" content="<%= eduvent.name %> - <%= eduvent.description %>">
+    <% } else { %> 
+        <meta name="description" content="EDU-vents - This website was created solely for the help of Philomaths. It would show the most important educational events happening around the world, providing an easy-to-use portal for them.">
     <% } %> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,24 +88,24 @@
         <img src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
         <div class="inner">
 
-            <% if (typeof eduvent.name !== "undefined") { %> 
+            <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> 
                 <h3><%= eduvent.name %></h3>
                 <br>
             <% } %> 
 
-            <% if (typeof eduvent.description !== "undefined") { %>
+            <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %>
                 <h4>Description</h4>
                 <p><%- eduvent.description %></p>
                 <br>
             <% } %>
 
-            <% if (typeof eduvent.type !== "undefined") { %> 
+            <% if (typeof eduvent.type !== "undefined" && eduvent.type !== "") { %> 
                 <h4>Type</h4>
                 <h5><%= eduvent.type %></h5>
                 <br>
             <% } %> 
 
-            <% if (typeof eduvent.location !== "undefined" || (typeof eduvent.googleMaps !== "undefined" && typeof eduvent.locationInfo !== "undefined")) { %> 
+            <% if ((typeof eduvent.location !== "undefined" && eduvent.location !== "") || ((typeof eduvent.googleMaps !== "undefined" && eduvent.googleMaps !== "") && (typeof eduvent.locationInfo !== "undefined" && eduvent.locationInfo !== ""))) { %> 
                 <h4>Location</h4>
                 <% if (!(eduvent.location === "other" || typeof eduvent.location === "undefined") && (typeof eduvent.googleMaps !== "undefined" && typeof eduvent.locationInfo !== "undefined")) { %> 
                     <h5><%= eduvent.location %> &nbsp;&nbsp; - &nbsp;&nbsp; <a href="<%= eduvent.googleMaps %>"><%= eduvent.locationInfo %></a></h5>

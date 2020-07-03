@@ -38,8 +38,8 @@
                 </div>
                 <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                 <div class="inner">
-                    <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
-                    <% if (typeof eduvent.description !== "undefined") { %> <p dir="rtl"><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                    <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
+                    <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %> <p dir="rtl"><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
                     <a dir="rtl" href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
                 </div>
             </div>
@@ -67,8 +67,8 @@
                     </div>
                     <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                     <div class="inner">
-                        <% if (typeof eduvent.name !== "undefined") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
-                        <% if (typeof eduvent.description !== "undefined") { %> <p dir="rtl"><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
+                        <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> <h2 dir="rtl"><%= eduvent.name %></h2> <% } %> 
+                        <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %> <p dir="rtl"><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
                         <a dir="rtl" href="/edu-vents/ar/<%= eduvent._id %>" target="_blank">تعلم المزيد</a>
                     </div>
                 </div>

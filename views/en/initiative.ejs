@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <% if (typeof initiative.name !== "undefined") { %> 
+    <% if (typeof initiative.name !== "undefined" && initiative.name !== "") { %> 
         <title>EDU-vents | <%= initiative.name %></title>
     <% } else { %> 
         <title>EDU-vents</title>
     <% } %> 
 
-    <% if (typeof initiative.name !== "undefined" && typeof initiative.description !== "undefined") { %>
+    <% if (typeof initiative.name !== "undefined" && typeof initiative.description !== "undefined" && initiative.name !== "" && initiative.description !== "") { %>
         <meta name="description" content="<%= initiative.name %> - <%= initiative.description %>">
-    <% } else if (typeof initiative.description !== "undefined") { %>
+    <% } else if (typeof initiative.description !== "undefined" && initiative.description !== "") { %>
         <meta name="description" content="<%= initiative.description %>">
     <% } else { %> 
         <meta name="description" content="EDU-vents - This website was created solely for the help of Philomaths. It would show the most important educational events happening around the world, providing an easy-to-use portal for them.">
@@ -70,18 +70,18 @@
         <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
         <div class="inner">
 
-            <% if (typeof initiative.name !== "undefined") { %> 
+            <% if (typeof initiative.name !== "undefined" && initiative.name !== "") { %> 
                 <h3><%= initiative.name %></h3>
                 <br>
             <% } %> 
 
-            <% if (typeof initiative.description !== "undefined") { %>
+            <% if (typeof initiative.description !== "undefined" && initiative.description !== "") { %>
                 <h4>Description</h4>
                 <p><%- initiative.description %></p>
                 <br>
             <% } %>
 
-            <% if (typeof initiative.url !== "undefined") { %> 
+            <% if (typeof initiative.url !== "undefined" && initiative.url !== "") { %> 
                 <a class="attend" href="<%= initiative.url %>" target="_blank">Website</a>
             <% } %> 
         </div>

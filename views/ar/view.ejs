@@ -7,18 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="/images/seco.ico">
 
-    <% if (typeof eduvent.name !== "undefined") { %> 
+    <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> 
         <title dir="rtl">إديوفينتس | <%= eduvent.name %></title>
     <% } else { %> 
         <title dir="rtl">إديوفينتس</title>
     <% } %>
 
-    <% if (typeof eduvent.name !== "undefined") { %>
+    <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %>
         <meta dir="rtl" name="description" content="<%= eduvent.description %>">
-    <% } else if (typeof eduvent.name !== "undefined" && typeof eduvent.name !== "undefined") { %>
-        <meta dir="rtl" name="description" content=".إديو- فينتس - تمت صناعة الموقع خصيصا لمساعدة الفطاحلة. سوف يتم عرض اهم الاحداث التعليمية التي تحدث حول العالم وسوف يتم توفير واجهة موقع سهلة الاستخدام">
-    <% } else { %> 
+    <% } else if ((typeof eduvent.name !== "undefined" && eduvent.name !== "") && (typeof eduvent.description !== "undefined" && eduvent.description !== "")) { %>
         <meta dir="rtl" name="description" content="<%= eduvent.name %> - <%= eduvent.description %>">
+    <% } else { %>
+        <meta dir="rtl" name="description" content=".إديو- فينتس - تمت صناعة الموقع خصيصا لمساعدة الفطاحلة. سوف يتم عرض اهم الاحداث التعليمية التي تحدث حول العالم وسوف يتم توفير واجهة موقع سهلة الاستخدام">
     <% } %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,20 +81,20 @@
         <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
         <div class="inner">
 
-            <% if (typeof eduvent.name !== "undefined") { %> 
+            <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> 
                 <h3 dir="rtl"><%= eduvent.name %></h3>
                 <br>
                 <br>
             <% } %>
 
-            <% if (typeof eduvent.description !== "undefined") { %>
+            <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %>
                 <h4 dir="rtl">الوصف</h4>
                 <p dir="rtl"><%- eduvent.description %></p>
                 <br>
                 <br>
             <% } %> 
 
-            <% if (typeof eduvent.type !== "undefined") { %>
+            <% if (typeof eduvent.type !== "undefined" && eduvent.type !== "") { %>
                 <h4 dir="rtl">النوع</h4>
                 <h5 dir="rtl"><%= eduvent.type %></h5>
                 <br>
@@ -102,7 +102,7 @@
             <% } %> 
 
 
-            <% if (typeof eduvent.location !== "undefined" || (typeof eduvent.googleMaps !== "undefined" && typeof eduvent.locationInfo !== "undefined")) { %> 
+            <% if ((typeof eduvent.location !== "undefined" && eduvent.location !== "") || ((typeof eduvent.googleMaps !== "undefined" && eduvent.googleMaps !== "") && (typeof eduvent.locationInfo !== "undefined" && eduvent.locationInfo !== ""))) { %> 
                 <h4 dir="rtl">الموقع</h4>
                 <% if (!(eduvent.location === "أخرى" || typeof eduvent.location === "undefined") && (typeof eduvent.googleMaps !== "undefined" && typeof eduvent.locationInfo !== "undefined")) { %> 
                     <h5 dir="rtl"><%= eduvent.location %> &nbsp;&nbsp; - &nbsp;&nbsp; <a dir="rtl" href="<%= eduvent.googleMaps %>"><%= eduvent.locationInfo %></a></h5>
@@ -131,7 +131,7 @@
                 <br>
             <% } %>
 
-            <% if (typeof eduvent.urltoapp !== "undefined") { %> 
+            <% if (typeof eduvent.urltoapp !== "undefined" && eduvent.urltoapp !== "") { %> 
                 <br>
                 <a dir="rtl" class="attend" href="/edu-vents/ar/<%= eduvent._id %>/attend" target="_blank">احضر</a>
             <% } %> 
