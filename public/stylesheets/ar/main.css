@@ -663,39 +663,6 @@ main {
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .edu-vent .inner p {
-        font-size: 15px;
-    }
-
-    .edu-vent .inner h2 {
-        font-size: 30px;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    .edu-vent img {
-        max-width: 300px;
-    }
-
-    .edu-vent .inner h2 {
-        font-size: 20px;
-    }
-}
-
-@media only screen and (max-width: 400px) {
-    .edu-vent img {
-        max-width: 250px;
-    }
-}
-
-/* ============================ EDU-vent ============================ */
-
-
-
-
-/* ============================ EDU-vent Collapse ============================ */
-
 @media only screen and (max-width: 1100px) {
     .row {
         flex-direction: column;
@@ -723,7 +690,33 @@ main {
     }
 }
 
-/* ============================ EDU-vent Collapese ============================ */
+@media only screen and (max-width: 600px) {
+    .edu-vent .inner p {
+        font-size: 15px;
+    }
+
+    .edu-vent .inner h2 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .edu-vent img {
+        max-width: 300px;
+    }
+
+    .edu-vent .inner h2 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .edu-vent img {
+        max-width: 250px;
+    }
+}
+
+/* ============================ EDU-vent ============================ */
 
 
 
