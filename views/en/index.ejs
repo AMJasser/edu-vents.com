@@ -25,20 +25,22 @@
     <div class="row" style="display: flex;">
         <% } %>
         <div class="edu-vent">
-            <div class="featinit">
-                <% initiatives.forEach(function(initiative) { %>
-                    <% if (initiative._id.toString() === eduvent.initiative) { %>
-                        <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
-                            <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
-                            <%= initiative.name %>
-                        </div>
-                    <% } else { %>
-                        <div></div>
-                    <% } %>
-                <% }) %>
-                <div class="featured">featured</div>
+            <div>
+                <div class="featinit">
+                    <% initiatives.forEach(function(initiative) { %>
+                        <% if (initiative._id.toString() === eduvent.initiative) { %>
+                            <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
+                                <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                                <%= initiative.name %>
+                            </div>
+                        <% } else { %>
+                            <div></div>
+                        <% } %>
+                    <% }) %>
+                    <div class="featured">featured</div>
+                </div>
+                <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
             </div>
-            <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
             <div class="inner">
                 <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> <h2><%= eduvent.name %></h2> <% } %> 
                 <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
@@ -57,17 +59,19 @@
     <div class="row" style="display: flex;">
         <% } %>
         <div class="edu-vent">
-            <div class="featinit">
-                <% initiatives.forEach(function(initiative) { %>
-                    <% if (initiative._id.toString() === eduvent.initiative) { %>
-                        <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
-                            <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
-                            <%= initiative.name %>
-                        </div>
-                    <% } %>
-                <% }) %>
+            <div>
+                <div class="featinit">
+                    <% initiatives.forEach(function(initiative) { %>
+                        <% if (initiative._id.toString() === eduvent.initiative) { %>
+                            <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
+                                <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                                <%= initiative.name %>
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+                <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
             </div>
-            <img alt="EDU-vent img" src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
             <div class="inner">
                 <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> <h2><%= eduvent.name %></h2> <% } %> 
                 <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 

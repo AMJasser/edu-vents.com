@@ -14,18 +14,20 @@
     <div class="container">
         <% featured.forEach(function(eduvent) { %>
             <div class="edu-vent">
-                <div class="featinit">
-                    <% initiatives.forEach(function(initiative) { %>
-                        <% if (eduvent.initiative === initiative._id.toString()) { %>
-                            <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
-                                <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
-                                <%= initiative.name %>
-                            </div>
-                        <% } %>
-                    <% }) %>
-                    <div class="featured">featured</div>
+                <div>
+                    <div class="featinit">
+                        <% initiatives.forEach(function(initiative) { %>
+                            <% if (eduvent.initiative === initiative._id.toString()) { %>
+                                <div class="initiative" onclick="location.href='/initiatives/en/<%= initiative._id %>'" style="cursor: pointer;">
+                                    <img src="https://manage.edu-vents.com/uploads/<%= initiative.imgPath %>">
+                                    <%= initiative.name %>
+                                </div>
+                            <% } %>
+                        <% }) %>
+                        <div class="featured">featured</div>
+                    </div>
+                    <img src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                 </div>
-                <img src="https://manage.edu-vents.com/uploads/<%= eduvent.imgPath %>">
                 <div class="inner">
                     <% if (typeof eduvent.name !== "undefined" && eduvent.name !== "") { %> <h2><%= eduvent.name %></h2> <% } %> 
                     <% if (typeof eduvent.description !== "undefined" && eduvent.description !== "") { %> <p><%- eduvent.description.substring(0, 45) %>...</p> <% } %> 
