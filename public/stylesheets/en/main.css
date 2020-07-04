@@ -634,7 +634,7 @@ main {
 }
 
 .edu-vent img {
-    max-width: 400px;
+    max-width: 300px;
     max-height: 300px;
 }
 
@@ -694,6 +694,38 @@ main {
     display: inline-block;
 }
 
+@media only screen and (max-width: 1350px) {
+    .edu-vent img {
+        max-width: 250px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .edu-vent .inner p {
+        font-size: 15px;
+    }
+
+    .edu-vent .inner h2 {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .edu-vent img {
+        max-width: 300px;
+    }
+
+    .edu-vent .inner h2 {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .edu-vent img {
+        max-width: 250px;
+    }
+}
+
 /* ============================ EDU-vent ============================ */
 
 
@@ -721,6 +753,10 @@ main {
 
     .row .edu-vent .inner a {
         font-size: 17.5px;
+    }
+
+    .edu-vent img {
+        max-width: 400px;
     }
 }
 
