@@ -159,8 +159,8 @@ app.get("/edu-vents", async function (req, res, next) { //english
             };
 
             var allEduvents = await Eduvent.find(search).sort({ clickCount: -1 }); //getting data from DB
-            var types = await Type.find();
-            var locations = await Location.find();
+            var types = await Type.find().sort({ en: 1 });
+            var locations = await Location.find().sort({ en: 1 });
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
             var initiatives = await Initiative.find();
             res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
@@ -178,8 +178,8 @@ app.get("/edu-vents", async function (req, res, next) { //english
     } else {
         try {
             var allEduvents = await Eduvent.find().sort({ clickCount: -1 }); //getting data from DB
-            var types = await Type.find();
-            var locations = await Location.find();
+            var types = await Type.find().sort({ en: 1 });
+            var locations = await Location.find().sort({ en: 1 });
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
             var initiatives = await Initiative.find();
             res.render("en/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
@@ -225,8 +225,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
             };
 
             var allEduvents = await EduventAr.find(search).sort({ clickCount: -1 }); //getting data from DB
-            var types = await Type.find();
-            var locations = await Location.find();
+            var types = await Type.find().sort({ en: 1 });
+            var locations = await Location.find().sort({ en: 1 });
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
             var initiatives = await Initiative.find();
             res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
@@ -244,8 +244,8 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
     } else {
         try {
             var allEduvents = await EduventAr.find().sort({ clickCount: -1 }); //getting data from DB
-            var types = await Type.find();
-            var locations = await Location.find();
+            var types = await Type.find().sort({ en: 1 });
+            var locations = await Location.find().sort({ en: 1 });
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
             var initiatives = await Initiative.find();
             res.render("ar/index", { featured: Eduvents.featured, notFeatured: Eduvents.notFeatured, types: types, locations: locations, initiatives: initiatives }, function(err, html) {
