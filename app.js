@@ -63,7 +63,7 @@ function feat(Eduvents) {
 
 app.get("/", async function (req, res) { //english
     try {
-        var allEduvents = await Eduvent.find(); //getting data from DB
+        var allEduvents = await Eduvent.find().sort({ clickCount: -1 }); //getting data from DB
         const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
         var initiatives = await Initiative.find();
         if (typeof req.query.msg !== "undefined") {
@@ -93,7 +93,7 @@ app.get("/", async function (req, res) { //english
 
 app.get("/ar", async function (req, res, next) { //arabic
     try {
-        var allEduvents = await EduventAr.find(); //getting data from DB
+        var allEduvents = await EduventAr.find().sort({ clickCount: -1 }); //getting data from DB
         const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
         var initiatives = await Initiative.find();
         res.render("ar/home", { featured: Eduvents.featured, initiatives: initiatives }, function(err, html) {
@@ -112,8 +112,8 @@ app.get("/ar", async function (req, res, next) { //arabic
 
 app.get("/featured", async function(req, res) {
     try {
-        var allEduventsEn = await Eduvent.find();
-        var allEduventsAr = await EduventAr.find();
+        var allEduventsEn = await Eduvent.find().sort({ clickCount: -1 });
+        var allEduventsAr = await EduventAr.find().sort({ clickCount: -1 });
         var eduvents = feat(allEduventsEn);
         var eduventsar = feat(allEduventsAr);
         var initiatives = await Initiative.find();
@@ -158,7 +158,7 @@ app.get("/edu-vents", async function (req, res, next) { //english
                 delete search.location;
             };
 
-            var allEduvents = await Eduvent.find(search); //getting data from DB
+            var allEduvents = await Eduvent.find(search).sort({ clickCount: -1 }); //getting data from DB
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
@@ -177,7 +177,7 @@ app.get("/edu-vents", async function (req, res, next) { //english
         }
     } else {
         try {
-            var allEduvents = await Eduvent.find(); //getting data from DB
+            var allEduvents = await Eduvent.find().sort({ clickCount: -1 }); //getting data from DB
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
@@ -224,7 +224,7 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
                 delete search.location;
             };
 
-            var allEduvents = await EduventAr.find(search); //getting data from DB
+            var allEduvents = await EduventAr.find(search).sort({ clickCount: -1 }); //getting data from DB
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
@@ -243,7 +243,7 @@ app.get("/ar/edu-vents", async function (req, res, next) { //arabic
         }
     } else {
         try {
-            var allEduvents = await EduventAr.find(); //getting data from DB
+            var allEduvents = await EduventAr.find().sort({ clickCount: -1 }); //getting data from DB
             var types = await Type.find();
             var locations = await Location.find();
             const Eduvents = feat(allEduvents); //function to discriminate featured and non-featured
@@ -334,7 +334,7 @@ app.get("/edu-vents/ar/:id/attend", async function(req, res) {
 app.get("/initiatives/en/:id", async function(req, res) {
     try {
         var initiative = await Initiative.findById(req.params.id);
-        var eduvents = await Eduvent.find({initiative: initiative._id.toString()});
+        var eduvents = await Eduvent.find({initiative: initiative._id.toString()}).sort({ clickCount: -1 });
         res.render("en/initiative", {initiative, eduvents}, function(err, html) {
             if (err) {
                 console.log(err);
@@ -352,7 +352,7 @@ app.get("/initiatives/en/:id", async function(req, res) {
 app.get("/initiatives/ar/:id", async function(req, res) {
     try {
         var initiative = await Initiative.findById(req.params.id);
-        var eduvents = await EduventAr.find({initiative: initiative._id.toString()});
+        var eduvents = await EduventAr.find({initiative: initiative._id.toString()}).sort({ clickCount: -1 });
         res.render("ar/initiative", {initiative, eduvents}, function(err, html) {
             if (err) {
                 console.log(err);
