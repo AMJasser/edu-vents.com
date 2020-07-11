@@ -5,14 +5,18 @@
         <div class="centrer">
             <input dir="rtl" type="text" name="query" placeholder="بحث...">
             <select type="text" name="type">
+                <option>الكل</option>
                 <% types.forEach(function(type) { %>
                     <option><%= type.ar %></option>
                 <% }) %>
+                <option>أخرى</option>
             </select>
             <select name="location">
+                <option>الكل</option>
                 <% locations.forEach(function(location) { %>
                     <option><%= location.ar %> </option>
                 <% }) %>
+                <option>أخرى</option>
             </select>
             <button>بحث</button>
         </div>

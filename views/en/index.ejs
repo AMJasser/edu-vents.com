@@ -5,14 +5,18 @@
         <div class="centrer">
             <input type="text" name="query" placeholder="Search...">
             <select type="text" name="type">
+                <option>Any</option>
                 <% types.forEach(function(type) { %>
                     <option><%= type.en %></option>
                 <% }) %>
+                <option>Other</option>
             </select>
             <select name="location">
+                <option>Any</option>
                 <% locations.forEach(function(location) { %>
                     <option><%= location.en %> </option>
                 <% }) %>
+                <option>Other</option>
             </select>
             <button>Search</button>
         </div>
