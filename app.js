@@ -434,7 +434,7 @@ app.get("/:name", async function (req, res) { //english 404
     try {
         var initiative = await Initiative.findOne({ name: req.params.name });
         if (initiative !== null) {
-            res.redirect(`/initiatives/en/${initiative.name}`);
+            res.redirect(`/initiatives/en/${initiative._id}`);
         } else {
             res.render("error", { error: "404    Page Not Found" });
         }
