@@ -430,6 +430,20 @@ app.post("/forms/:url", anyUpload, async function(req, res) {
     }
 });
 
+app.get("/:name", async function (req, res) { //english 404
+    try {
+        var initiative = await Initiative.findOne({ name: req.params.name });
+        if (initiative !== null) {
+            res.redirect(`/initiatives/en/${initiative.name}`);
+        } else {
+            res.render("error", { error: "404    Page Not Found" });
+        }
+    } catch(err) {
+        console.error(err);
+        res.status(500).render("error");
+    }
+});
+
 app.get("*", function (req, res) { //english 404
     res.render("error", { error: "404    Page Not Found" });
 });
