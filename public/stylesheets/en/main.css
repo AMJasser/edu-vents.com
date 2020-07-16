@@ -867,6 +867,7 @@ main {
 @media only screen and (max-width: 650px) {
     .edu-vents div {
         flex-direction: column;
+        align-items: stretch
     }
 
     .edu-vents div h3 {
