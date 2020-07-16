@@ -891,6 +891,7 @@ footer {
     font-size: 17.5px;
     padding: 30px 20px;
     display: flex;
+    flex-shrink: 0;
 }
 
 footer img {
