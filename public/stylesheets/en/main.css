@@ -787,6 +787,7 @@ main {
 
 .view .inner {
     text-align: center;
+    overflow: hidden;
 }
 
 .view p {
@@ -869,6 +870,16 @@ main {
 
 .edu-vents div a:hover {
     transform: scale(1.25);
+}
+
+@media only screen and (max-width: 650px) {
+    .edu-vents div {
+        flex-direction: column;
+    }
+
+    .edu-vent div h3 {
+        margin: 25px 0;
+    }
 }
 
 /* ============================ View ============================ */
