@@ -801,7 +801,6 @@ main {
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
     padding: 20px 0;
-    text-align: center;
 }
 
 .edu-vents div h3 {
@@ -829,7 +828,7 @@ main {
 @media only screen and (max-width: 650px) {
     .edu-vents div {
         flex-direction: column-reverse;
-        align-items: stretch;
+        align-items: center;
     }
 
     .edu-vent div h3 {
