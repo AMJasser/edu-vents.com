@@ -806,10 +806,6 @@ main {
     padding: 20px 0;
 }
 
-.edu-vents div * {
-    display: inline-block;
-}
-
 .edu-vents div h3 {
     margin: 0 15px 0 50px;
 }
@@ -835,7 +831,6 @@ main {
 @media only screen and (max-width: 650px) {
     .edu-vents div {
         flex-direction: column;
-        min-height: 250px;
     }
 
     .edu-vent div h3 {
