@@ -734,8 +734,6 @@ main {
     border: 0.5px solid #eeeeee;
     border-radius: 20px;
     text-align: center;
-    height: auto;
-    width: auto;
     margin: 2.5% 15%;
     padding: 20px;
     box-sizing: border-box;
@@ -790,8 +788,6 @@ main {
     border: 0.5px solid #eeeeee;
     border-radius: 20px;
     text-align: center;
-    height: auto;
-    width: auto;
     margin: 2.5% 15%;
     padding: 20px;
     box-sizing: border-box;
@@ -808,7 +804,6 @@ main {
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #eeeeee;
     padding: 20px 0;
-    height: fit-content;
 }
 
 .edu-vents div * {
