@@ -19,6 +19,7 @@ header {
     color: white;
     padding: 15px 10px;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 /* ============================ LEFT ============================ */
