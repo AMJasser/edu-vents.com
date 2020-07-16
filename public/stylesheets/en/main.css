@@ -680,7 +680,8 @@ main {
     padding: 5px 5px;
     border-radius: 2.5px;
     font-weight: bold;
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
 
 .initiative img {
