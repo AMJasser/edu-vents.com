@@ -775,7 +775,7 @@ main {
 }
 
 .view img {
-    width: 50%;
+    max-width: 300px;
 }
 
 .view .inner {
