@@ -131,13 +131,11 @@
                 <h5>ends on: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
                 <br>
             <% } %>
-
-            <% if (typeof eduvent.urltoapp !== "undefined") { %> 
-                <br>
-                <a class="attend" href="/edu-vents/en/<%= eduvent._id %>/attend" target="_blank">Attend</a>
-            <% } %> 
         </div>
-    </div>
+        <% if (typeof eduvent.urltoapp !== "undefined") { %> 
+            <br>
+            <a class="attend" href="/edu-vents/en/<%= eduvent._id %>/attend" target="_blank">Attend</a>
+        <% } %>
     </div>
 
     <footer>

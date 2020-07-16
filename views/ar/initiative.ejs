@@ -77,11 +77,10 @@
                 <br>
                 <br>
             <% } %> 
-
-            <% if (typeof initiative.url !== "undefined" && initiative.url !== "") { %> 
-                <a dir="rtl" class="attend" href="<%= initiative.url %>" target="_blank">الموقع</a>
-            <% } %> 
         </div>
+        <% if (typeof initiative.url !== "undefined" && initiative.url !== "") { %> 
+            <a dir="rtl" class="attend" href="<%= initiative.url %>" target="_blank">الموقع</a>
+        <% } %> 
     </div>
 
     <% if (eduvents.length > 0) { %>

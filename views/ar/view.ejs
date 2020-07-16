@@ -130,12 +130,11 @@
                 <h5 dir="rtl">ينتهي في: <%= ddEnd + "/" + mmEnd + "/" + yyyyEnd %></h5>
                 <br>
             <% } %>
-
-            <% if (typeof eduvent.urltoapp !== "undefined" && eduvent.urltoapp !== "") { %> 
-                <br>
-                <a dir="rtl" class="attend" href="/edu-vents/ar/<%= eduvent._id %>/attend" target="_blank">احضر</a>
-            <% } %> 
         </div>
+        <% if (typeof eduvent.urltoapp !== "undefined" && eduvent.urltoapp !== "") { %> 
+            <br>
+            <a dir="rtl" class="attend" href="/edu-vents/ar/<%= eduvent._id %>/attend" target="_blank">احضر</a>
+        <% } %> 
     </div>
 
     <footer>

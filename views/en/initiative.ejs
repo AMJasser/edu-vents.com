@@ -80,11 +80,10 @@
                 <p><%- initiative.description %></p>
                 <br>
             <% } %>
-
-            <% if (typeof initiative.url !== "undefined" && initiative.url !== "") { %> 
-                <a class="attend" href="<%= initiative.url %>" target="_blank">Website</a>
-            <% } %> 
         </div>
+        <% if (typeof initiative.url !== "undefined" && initiative.url !== "") { %> 
+            <a class="attend" href="<%= initiative.url %>" target="_blank">Website</a>
+        <% } %> 
     </div>
 
     <% if (eduvents.length > 0) { %>
