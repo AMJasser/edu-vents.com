@@ -822,7 +822,7 @@ main {
 .edu-vents {
     text-align: initial;
     display: flex;
-    flex-flow: column;
+    flex-direction: row;
     border: 0.5px solid #eeeeee;
     border-radius: 20px;
     text-align: center;
@@ -878,7 +878,7 @@ main {
     }
 
     .edu-vent div h3 {
-        margin: 25px 0;
+        margin: 25px 0 25px 0;
     }
 }
 
