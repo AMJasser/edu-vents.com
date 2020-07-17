@@ -664,6 +664,7 @@ main {
     border-radius: 2.5px;
     font-weight: bold;
     display: inline-block;
+    height: fit-content;
 }
 
 @media only screen and (max-width: 1350px) {
