@@ -51,7 +51,7 @@ function feat(Eduvents) {
 
     Eduvents.forEach(function (eduvent) { //loop through all DB documents
         target = new Date(eduvent.featuredUntil); //setting target date to event date
-        if (now < target) { //checking if event is still featured
+        if (now <= target) { //checking if event is still featured
             featured.push(eduvent);
         } else { //then it is not feautred...
             notFeatured.push(eduvent);
