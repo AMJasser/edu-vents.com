@@ -44,7 +44,7 @@ function escapeRegex(text) { //function to escape Regex (Regex injection attack)
 };
 
 function feat(Eduvents) {
-    const now = new Date; //today date
+    const now = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate()); //today date
     var target; //initializing event date
     var featured = []; //initializing featured events array
     var notFeatured = []; //initializing non-featured events array
