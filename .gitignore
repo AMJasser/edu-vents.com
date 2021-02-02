@@ -2,8 +2,6 @@ config/config.env
 
 node_modules/
 
-scripts/
-
 .eslintrc.json
 
 public/uploads/*
