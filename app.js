@@ -14,6 +14,7 @@ dotenv.config({ path: "./config/config.env" });
 connectDb();
 
 // Route files
+const index = require("./routes/index");
 
 const app = express();
 
@@ -35,6 +36,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.static(path.join(__dirname, "public")));
 
 // Mount routers
+app.use("/:lang([a-z]{2})?/", index);
 
 app.use(errorHandler);
 
