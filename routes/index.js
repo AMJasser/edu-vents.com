@@ -12,6 +12,8 @@ router.use(lang);
 router.get("/", asyncHandler(async (req, res, next) => {
     const eduvents = await Eduvent.find({ featured: true }).populate("initiative").sort({ clickCount: -1 });
 
+    console.log(eduvents);
+
     viewResponse("index", { eduvents, msg: req.query.msg || undefined, lang: req.lang }, res, next);
 }));
 

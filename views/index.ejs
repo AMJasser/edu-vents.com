@@ -1,5 +1,124 @@
 <%- include("partials/header", { lang }); %>
 
+<div id="img-bg" class="wrapped">
+    <div>
+        <% if (lang === "en") { %>
+            <h2>Find Your Event.</h2>
+            <p>EDU-vents is a website that offers educational events for aspiring youth. EDU-vents' main goal is to facilitate the readiness of young people who wish to study abroad by providing access to extracurricular activities that are occuring nearby</p>
+            <a href="/edu-vents">Start!</a>
+        <% } else if (lang === "ar") { %>
+            <h2>.اعثر على حدثك</h2>
+            <p>إديوفينتس هو موقع إلكتروني يعرض الأحداث والفعاليات التعليمية الموجهه لفئة الشباب الطموحين. هدف إديوفنتس الرئيسي هو تسهيل عناء استعداد البعثة للشباب الذين يرغبون بالدراسة في الخارج بتزويدهم بالأنشطة اللاصفية المقامة حولهم</p>
+            <a href="/ar/edu-vents">ابدأ</a>
+        <% } %>
+    </div>
+</div>
 
+<% if (eduvents.length > 0) { %>
+    <div class="container">
+        <% eduvents.forEach(function(eduvent) { %>
+            <div class="edu-vent">
+                <div>
+                    <div class="featinit">
+                        <div class="initiative" onclick="location.href='/en/initiatives/<%= eduvent.initiative._id %>'" style="cursor: pointer;">
+                            <img src="https://manage.edu-vents.com/uploads/<%= eduvent.initiative.img %>">
+                            <%= eduvent.initiative.name[lang] %>
+                        </div>
+                        <div class="featured">featured</div>
+                    </div>
+                    <img src="https://manage.edu-vents.com/uploads/<%= eduvent.img %>">
+                </div>
+                <div class="inner">
+                    <h2><%= eduvent.name[lang] %></h2>
+                    <p><%- eduvent.description[lang].substring(0, 45) %>...</p>
+                    <a href="/edu-vents/en/<%= eduvent._id %>" target="_blank">Learn more</a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+<% } %>
+
+<main>
+    <div id="vision">
+        <img src="/images/vision2030.png">
+        <div>
+            <img src="/images/vibrantsociety.svg">
+            <% if (lang === "en") { %>
+                <h3>Vibrant Society</h3>
+                <p>One of Saudi Arabia's 2030 vision themes is having a vibrant society with fulfilling lives. Since EDU-vents aids in the sharing of educational events, it will contribute to reaching this goal.</p>
+            <% } else if (lang === "ar") { %>
+                <h3>مجتمع حيوي</h3>
+                <p>إن أحد سمات رؤية 2030 للمملكة العربية السعودية هو وجود مجتمع حيوي بيئته عامرة. نظراً لأن إديوفينتس يساعد في مشاركة الأحداث التعليمية, فسيساهم (بإذن الله) في تحقيق هذا الهدف</p>
+            <% } %>
+        </div>
+    </div>
+
+    <div id="shapes">
+        <span id="circle-top"></span>
+        <span id="line"></span>
+        <span id="circle-bottom"></span>
+    </div>
+
+    <div id="what">
+        <div>
+            <% if (lang === "en") { %>
+                <h3>EDU-vents</h3>
+                <p>That is why we created EDU-vents. We would like to fulfill the lives of Saudi's youth to open up global opportunities for their account.</p>
+            <% } else if (lang === "ar") { %>
+                <h3>إديوفينتس</h3>
+                <p>لهذا السبب, أنشأنا إديوفينتس. نود أن نملأ حياة الشاب السعودي لفتح فرص عالمية لصالحهم</p>
+            <% } %>
+        </div>
+        <img src="/images/logo_blue.jpg">
+    </div>
+
+    <div id="benefit">
+        <div>
+            <span class="dotted"></span>
+            <div class="section">
+                <img src="/images/resume.png">
+                <% if (lang === "en") { %>
+                    <p>Search between hundreds of EDU-vents in different parts of Saudi Arabia</p>
+                <% } else if (lang === "ar") { %>
+                    <p>ابحث بين مئات الإديوفينتات في مختلف أنحاء المملكة العربية السعودية</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div>
+            <span class="dotted"></span>
+            <div class="section">
+                <img src="/images/tap.png">
+                <% if (lang === "en") { %>
+                    <p>Easy acces to all parts of the website with no registration or fee.</p>
+                <% } else if (lang === "ar") { %>
+                    <p>اوصل الى جميع أجزاء الموقع بسهولة بدون تسجيل أو رسوم</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div>
+            <span class="dotted"></span>
+            <div>
+                <img src="/images/friendship.png">
+                <% if (lang === "en") { %>
+                    <p>Maintained by ambitious youngsters ready to take the next step</p>
+                <% } else if (lang === "ar") { %>
+                    <p>الموقع محافظ عليه من قبل شباب سعودي طموح مستعد لاخذ الخطوة التالية</p>
+                <% } %>                
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    #home {
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    $(".wrapped").wrapAll('<div id="wrapper"></div>');
+</script>
 
 <%- include("partials/footer", { lang }); %>
