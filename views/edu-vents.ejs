@@ -1,0 +1,72 @@
+<%- include("partials/header", { lang }); %>
+
+<main>
+    <form id="search" action="/edu-vents" method="GET">
+        <div class="center">
+            <input type="text" name="query" placeholder="Search">
+            <select name="type">
+                <% if (lang === "en") { %>
+                    <option>Any</option>
+                    <% types.forEach(function(type) { %>
+                        <option><%= type.en %></option>
+                    <% }) %>
+                <% } else if (lang === "ar") {%>
+                    <option>الكل</option>
+                    <% types.forEach(function(type) { %>
+                        <option><%= type.ar %></option>
+                    <% }) %>
+                <% } %>
+            </select>
+            <% if (lang === "en") { %>
+                <button>Search</button>
+            <% } else if (lang === "ar") {%>
+                <button>بحث</button>
+            <% } %>
+        </div>
+    </form>
+
+<% var counter = 1; %>
+
+<% eduvents.forEach(function(eduvent) { %>
+<% if (counter % 3 == 1) { %>
+    <div class="row" style="display: flex;">
+<% } %>
+    <div class="edu-vent">
+        <div>
+            <div class="featinit">
+                <% if (eduvent.initiative) { %>
+                    <div class="initiative" onclick="location.href='/en/initiatives/<%= eduvent.initiative._id %>'" style="cursor: pointer;">
+                        <img src="https://manage.edu-vents.com/uploads/<%= eduvent.initiative.img %>">
+                        <%= eduvent.initiative.name[lang] %>
+                    </div>
+                <% } else { %>
+                    <div></div>
+                <% } %>
+
+                <% if (eduvent.featured === true) { %>
+                    <div class="featured">featured</div>
+                <% } %>
+            </div>
+            <img src="https://manage.edu-vents.com/uploads/<%= eduvent.img %>">
+        </div>
+        <div class="inner">
+            <h2><%= eduvent.name[lang] %></h2>
+            <p><%- eduvent.description[lang].substring(0, 45) %>...</p>
+            <a href="/edu-vents/en/<%= eduvent._id %>" target="_blank">Learn more</a>
+        </div>
+    </div>
+<% if (counter %3 == 0) { %>
+    </div>
+<% } %>
+<% counter++ %>
+<% }); %>
+
+</main>
+
+<style>
+    #edu-vents {
+        font-weight: bold;
+    }
+</style>
+
+<%- include("partials/footer", { lang }); %>
