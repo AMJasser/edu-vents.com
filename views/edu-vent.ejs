@@ -1,0 +1,93 @@
+<%- include("partials/header", { lang }); %>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyRJB3kHIdgrDM36GLEH-8l4Nh8sNDTx0&callback=initMap&libraries=&v=weekly" defer></script>
+
+<%
+    if (typeof eduvent.date !== "undefined") {
+        var date = ("0" + eduvent.date.getDate()).slice(-2) + "/" + ("0" + (eduvent.date.getMonth() + 1)).slice(-2) + "/" + eduvent.date.getFullYear();
+        date += " " + eduvent.date.getHours() + ":" + eduvent.date.getMinutes();
+    }
+%>
+<% 
+    if (typeof eduvent.endDate !== "undefined") {
+        var endDate = ("0" + eduvent.endDate.getDate()).slice(-2) + "/" + ("0" + (eduvent.endDate.getMonth() + 1)).slice(-2) + "/" + eduvent.endDate.getFullYear();
+        endDate += " " + eduvent.endDate.getHours() + ":" + eduvent.endDate.getMinutes();
+    }
+%>
+
+<div class="view">
+    <div class="featinit">
+        <% if (eduvent.initiative) { %>
+            <div class="initiative" onclick="location.href='/en/initiatives/<%= eduvent.initiative._id %>'" style="cursor: pointer;">
+                <img src="https://manage.edu-vents.com/uploads/<%= eduvent.initiative.img %>">
+                <%= eduvent.initiative.name[lang] %>
+            </div>
+        <% } else { %>
+            <div></div>
+        <% } %>
+
+        <% if (eduvent.featured === true) { %>
+            <% if (lang === "en") { %>
+                <div class="featured">featured</div>
+            <% } else if (lang === "ar") { %>
+                <div class="featured">مميز</div>
+            <% } %>
+        <% } %>
+    </div>
+    <img src="https://manage.edu-vents.com/uploads/<%= eduvent.img %>">
+    <div class="inner">
+        <h3><%= eduvent.name[lang] %></h3>
+        <br>
+        <h4>Description</h4>
+        <p><%- eduvent.description[lang] %></p>
+        <br>
+        <h4>Type</h4>
+        <h5><%= eduvent.type[lang] %></h5>
+        <br>
+        <% if (eduvent.location.coordinates) { %>
+            <div id="map" style="height: 500px;"></div>
+            <br>
+            <script type="text/javascript">
+                function initMap() {
+                    var loc = {
+                        lat: eval("<%= eduvent.location.coordinates[1] %>"),
+                        lng: eval("<%= eduvent.location.coordinates[0] %>")
+                    }
+
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 17,
+                        center: loc
+                    });
+
+                    const marker = new google.maps.Marker({
+                        position: loc,
+                        map: map,
+                        title: "<%= eduvent.name[lang] %>"
+                    })
+                }
+                </script>
+        <% } %>
+        <h5><%= date %></h5>
+        <br>
+        <h5><%= endDate %></h5>
+        <br>
+        <br>
+        <a class="attend" href="/edu-vents/<%= eduvent._id %>/attend" target="_blank">Attend</a>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        document.querySelector("title").text = "EDU-vents | <%= eduvent.name[lang] %>";
+        document.querySelector("meta[name='description']").content = "<%= eduvent.description[lang] %>";
+
+        let el = document.createElement("meta");
+        el.name = "og:image";
+        el.itemprop = "image";
+        el.content = "https://manage.edu-vents.com/uploads/<%= eduvent.img %>";
+
+        document.getElementsByTagName("head")[0].appendChild(el);
+    }
+</script>
+
+<%- include("partials/footer", { lang }); %>

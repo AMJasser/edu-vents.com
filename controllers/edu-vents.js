@@ -12,3 +12,11 @@ exports.getEduvents = asyncHandler(async (req, res, next) => {
 
     viewResponse("edu-vents", { eduvents, types, lang: req.lang }, res, next);
 });
+
+// @desc    get edu-vent
+// @route   GET /edu-vents/:id
+exports.getEduvent = asyncHandler(async (req, res, next) => {
+    var eduvent = await Eduvent.findById(req.params.id).populate({ path: "initiative" });
+
+    viewResponse("edu-vent", { eduvent, lang: req.lang }, res, next);
+});

@@ -44,7 +44,11 @@
                 <% } %>
 
                 <% if (eduvent.featured === true) { %>
-                    <div class="featured">featured</div>
+                    <% if (lang === "en") { %>
+                        <div class="featured">featured</div>
+                    <% } else if (lang === "ar") { %>
+                        <div class="featured">مميز</div>
+                    <% } %>
                 <% } %>
             </div>
             <img src="https://manage.edu-vents.com/uploads/<%= eduvent.img %>">
@@ -52,7 +56,7 @@
         <div class="inner">
             <h2><%= eduvent.name[lang] %></h2>
             <p><%- eduvent.description[lang].substring(0, 45) %>...</p>
-            <a href="/edu-vents/en/<%= eduvent._id %>" target="_blank">Learn more</a>
+            <a href="<%= lang %>/edu-vents/<%= eduvent._id %>" target="_blank">Learn more</a>
         </div>
     </div>
 <% if (counter %3 == 0) { %>
