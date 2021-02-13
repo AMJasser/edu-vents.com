@@ -1,17 +1,13 @@
 const express = require("express");
 const lang = require("../middleware/lang");
 const { 
-    getEduvents,
-    getEduvent,
-    attend
-} = require("../controllers/edu-vents");
+    getInitiative
+} = require("../controllers/initiatives");
 
 const router = express.Router({ mergeParams: true });
 
 router.use(lang);
 
-router.get("/", getEduvents);
-router.get("/:id", getEduvent);
-router.get("/:id/attend", attend);
+router.get("/:id", getInitiative);
 
 module.exports = router;

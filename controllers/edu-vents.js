@@ -20,3 +20,18 @@ exports.getEduvent = asyncHandler(async (req, res, next) => {
 
     viewResponse("edu-vent", { eduvent, lang: req.lang }, res, next);
 });
+
+// @desc    counting number of attendees
+// @route   GET /edu-vents/:id/attend
+exports.attend = asyncHandler(async (req, res, next) => {
+    var eduvent = await Eduvent.findById(req.params.id);
+
+    if (!eduvent) {
+        return next(new ErrorResponse(`Edu-vent with id ${req.params.id} not found`, 404));
+    }
+
+    eduvent.clickCount++;
+    eduvent.save();
+
+    res.redirect(eduvent.url);
+});

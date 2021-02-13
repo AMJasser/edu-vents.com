@@ -1,0 +1,26 @@
+<%- include("partials/header", { lang }); %>
+
+<div class="view">
+    <img src="https://manage.edu-vents.com/uploads/<%= initiative.img %>">
+    <div class="inner">
+        <h3><%= initiative.name[lang] %></h3>
+        <br>
+        <h4>Description</h4>
+        <p><%- initiative.description[lang] %></p>
+        <% if (initiative.eduvents.length > 0) { %>
+            <div class="edu-vents">
+                <% initiative.eduvents.forEach(function(eduvent) { %>
+                    <div>
+                        <img src="https://manage.edu-vents.com/uploads/<%= eduvent.img %>">
+                        <h3><%= eduvent.name[lang] %></h3>
+                        <a href="/edu-vents/en/<%= eduvent._id %>">Learn More</a>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+        <br>
+    </div>
+    <a class="attend" href="<%= initiative.url %>" target="_blank">Website</a>
+</div>
+
+<%- include("partials/footer", { lang }); %>

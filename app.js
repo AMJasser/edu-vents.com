@@ -16,6 +16,7 @@ connectDb();
 // Route files
 const index = require("./routes/index");
 const eduvents = require("./routes/edu-vents");
+const initiatives = require("./routes/initiatives");
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Mount routers
 app.use("/:lang([a-z]{2})?/", index);
 app.use("/:lang([a-z]{2})?/edu-vents/", eduvents);
+app.use("/:lang([a-z]{2})?/initiatives/", initiatives);
 
 app.use(errorHandler);
 
