@@ -18,6 +18,7 @@ const index = require("./routes/index");
 const eduvents = require("./routes/edu-vents");
 const initiatives = require("./routes/initiatives");
 const slug = require("./routes/slug");
+const notFound = require("./routes/notFound");
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use("/:lang([a-z]{2})?/", index);
 app.use("/:lang([a-z]{2})?/edu-vents/", eduvents);
 app.use("/:lang([a-z]{2})?/initiatives/", initiatives);
 app.use("/:lang([a-z]{2})?/:slug", slug);
+app.use("*", notFound);
 
 app.use(errorHandler);
 

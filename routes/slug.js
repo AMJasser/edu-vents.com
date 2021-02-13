@@ -1,4 +1,3 @@
-const ErrorResponse = require("../utils/errorResponse");
 const express = require("express");
 const asyncHandler = require("../middleware/async");
 const viewResponse = require("../utils/viewResponse");
