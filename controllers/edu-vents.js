@@ -8,7 +8,7 @@ const Initiative = require("../models/Initiative");
 // @desc    get edu-vents
 // @route   GET /edu-vents
 exports.getEduvents = asyncHandler(async (req, res, next) => {
-    var eduvents = await Eduvent.find().populate({ path: "initiative" }).sort({ clickCount: -1 });
+    var eduvents = await Eduvent.find(req.query).populate({ path: "initiative" }).sort({ clickCount: -1 });
 
     viewResponse("edu-vents", { eduvents, types, lang: req.lang }, res, next);
 });

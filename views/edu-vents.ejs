@@ -3,8 +3,8 @@
 <main>
     <form id="search" action="/edu-vents" method="GET">
         <div class="center">
-            <input type="text" name="query" placeholder="Search">
-            <select name="type">
+            <input type="text" name="name.<%= lang %>" placeholder="Search">
+            <select name="type.<%= lang %>">
                 <% if (lang === "en") { %>
                     <option>Any</option>
                     <% types.forEach(function(type) { %>
